@@ -78,7 +78,7 @@ jobs:
           name: fronted test
           command: |
             cd frontend
-            np run test
+            npm run test
 
   test-backend:
     docker:
@@ -91,7 +91,7 @@ jobs:
           name: backend test
           command: |
             cd backend
-            np run test
+            npm run test
 
   # scan-frontend:
   #   docker:
