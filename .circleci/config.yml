@@ -78,7 +78,6 @@ jobs:
           name: fronted test
           command: |
             cd frontend
-            npm install -g oauth-1.0
             npm run test
 
   test-backend:
