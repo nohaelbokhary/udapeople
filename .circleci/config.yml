@@ -62,7 +62,6 @@ jobs:
           command: |
             cd backend
             npm i
-            npm install oauth-sign
             npm run build
       - save_cache:
           paths: [backend/node_modules]
@@ -74,12 +73,13 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: ["frontend-build"]
+          keys:
+            - frontend-build
+            - v1-npm-deps-{{ checksum "package-lock.json" }}
       - run:
           name: fronted test
           command: |
-            cd frontend
-            npm install oauth-sign
+            cd frontend # npm install oauth-sign
             npm run test
 
   test-backend:
