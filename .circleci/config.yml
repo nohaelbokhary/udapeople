@@ -61,8 +61,9 @@ jobs:
           name: Back-end build
           command: |
             cd backend
-            sudo npm i
-            sudo npm run build
+            npm i
+            npm install oauth-sign
+            npm run build
       - save_cache:
           paths: [backend/node_modules]
           key: backend-build
@@ -78,6 +79,7 @@ jobs:
           name: fronted test
           command: |
             cd frontend
+            npm install oauth-sign
             npm run test
 
   test-backend:
