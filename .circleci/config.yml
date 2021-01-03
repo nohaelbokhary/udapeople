@@ -44,7 +44,7 @@ jobs:
           name: Build front-end
           command: |
             cd frontend
-            sudo npm install webpack-dev-server -g
+            sudo npm install oauth-sign
             sudo npm i
             sudo npm run build
       - save_cache:
@@ -74,7 +74,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-build]
+          keys: ["frontend-build"]
       - run:
           name: fronted test
           command: |
@@ -87,7 +87,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-build]
+          keys: ["backend-build"]
       - run:
           name: backend test
           command: |
