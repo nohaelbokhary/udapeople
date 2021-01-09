@@ -49,6 +49,9 @@ jobs:
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-build2
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
 
   build-backend:
     docker:
@@ -66,6 +69,9 @@ jobs:
       - save_cache:
           paths: [backend/node_modules]
           key: backend-build
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
 
   test-frontend:
     docker:
@@ -80,6 +86,9 @@ jobs:
           command: |
             cd frontend
             npm run test
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
 # npm install oauth-sign
   test-backend:
     docker:
@@ -93,6 +102,9 @@ jobs:
           command: |
             cd backend
             npm run test
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
 
   scan-frontend:
     docker:
@@ -106,6 +118,9 @@ jobs:
           command: |
             cd frontend
             npm audit --audit-level=critical
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
 
   scan-backend:
     docker:
@@ -119,6 +134,9 @@ jobs:
           command: |
             cd backend
             npm audit --audit-level=critical
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
       # Checkout code from git
       # Restore from cache
       # Your job code here
@@ -294,10 +312,10 @@ workflows:
     jobs:
       - build-frontend
       - build-backend
-      - test-frontend:
-          requires: [build-frontend]
-      - test-backend:
-          requires: [build-backend]
+      # - test-frontend:
+      #     requires: [build-frontend]
+      # - test-backend:
+      #     requires: [build-backend]
       - scan-backend:
           requires: [build-backend]
       - scan-frontend:
