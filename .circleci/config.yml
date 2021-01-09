@@ -100,7 +100,6 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          paths: [frontend/node_modules]
           keys: frontend-build2
       - run:
           name: frontend scan
@@ -114,7 +113,6 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          paths: [backend/node_modules]
           keys: backend-build2
       - run:
           name: backend scan
