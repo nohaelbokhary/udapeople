@@ -5,10 +5,11 @@ Parameters:
   WorkflowID:
     Description: Unique identifier.
     Type: String
+    Default: "geuhgeiger"
 
 
 Resources:
-  
+
   CloudFrontOriginAccessIdentity:
     Type: "AWS::CloudFront::CloudFrontOriginAccessIdentity"
     Properties:
