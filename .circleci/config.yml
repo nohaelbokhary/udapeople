@@ -148,7 +148,7 @@ jobs:
     docker:
       # Docker image here that supports AWS CLI
       # - image: amazon/aws-cli
-      image: cimg/base:2020.01 # chosen because got an error on tar utility not presentin amazon/aws-cli
+      - image: cimg/base:2020.01 # chosen because got an error on tar utility not presentin amazon/aws-cli
     steps:
       - checkout
       - run:
