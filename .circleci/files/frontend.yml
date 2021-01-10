@@ -5,7 +5,7 @@ Parameters:
   ID:
     Description: Unique identifier.
     Type: String
-    efault: "geuhgeiger"
+    default: "geuhgeiger"
 
 Resources:
   WebsiteBucket:
