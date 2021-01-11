@@ -202,7 +202,6 @@ jobs:
       - run:
           name: Configure server
           command: |
-            # Your code here
             echo ENVIRONMENT=production > "backend/.env"
             echo TYPEORM_CONNECTION=postgres >> "backend/.env"
             echo TYPEORM_ENTITIES=./src/modules/domain/**/*.entity.ts >> "backend/.env"
