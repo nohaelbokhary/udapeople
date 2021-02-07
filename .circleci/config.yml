@@ -233,6 +233,7 @@ jobs:
     steps:
       # Checkout code from git
       - checkout
+      - aws-cli/setup
       - run:
           name: Run migrations
           command: |
@@ -249,6 +250,7 @@ jobs:
             echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> "backend/.env"
 
             cd backend
+            npm audit fix --audit-level=critical --force
             sudo npm install
             sudo npm run migrations > migration.log
             cat migration.log
